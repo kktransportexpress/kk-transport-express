@@ -1,8 +1,9 @@
 import AutocompleteAddress from "./AutocompleteAddress";
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 import React, { useState, useEffect, useRef } from "react";
 
+const [captchaValue, setCaptchaValue] = useState(null);
 const QuoteForm = ({ lang }) => {
   const [form, setForm] = useState({
     name: "",
@@ -63,7 +64,21 @@ const QuoteForm = ({ lang }) => {
       }
     }
 
-    console.log("Formulario enviado:", form);
+    fetch("http://localhost:5000/send-quote", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(formData),
+})
+  .then((res) => {
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      alert("Hubo un error al enviar la cotización.");
+    }
+  })
+  .catch(() => {
+    alert("No se pudo enviar la cotización.");
+  });
     alert("Solicitud enviada correctamente. Nos pondremos en contacto pronto.");
     setForm({
       name: "",
@@ -176,6 +191,11 @@ const QuoteForm = ({ lang }) => {
             placeholder={lang === "en" ? "Cargo Type" : "Tipo de carga"}
             className="border p-3 rounded md:col-span-2"
             required
+          />
+
+          <ReCAPTCHA
+           sitekey="TU_SITE_KEY"
+           onChange={(value) => setCaptchaValue(value)}
           />
           <button
             type="submit"
