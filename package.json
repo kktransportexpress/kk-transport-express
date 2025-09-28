@@ -13,7 +13,8 @@
     "@heroicons/react": "^2.2.0",
     "lucide-react": "^0.544.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",

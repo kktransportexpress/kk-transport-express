@@ -3,6 +3,10 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import AboutCompany from "./components/AboutCompany";
+import Testimonials from "./components/Testimonials";
+import Gallery from "./components/Gallery";
+import QuoteForm from "./components/QuoteForm";
 import {
   TruckIcon,
   CalendarIcon,
@@ -96,6 +100,10 @@ function App() {
           {content.switchLang}
         </button>
       </section>
+      {/* About */}
+      <section id="about">
+        <About lang={lang} />
+      </section>
 
       {/* Services */}
       <section id="services" className="py-16 bg-gray-100">
@@ -115,16 +123,23 @@ function App() {
           ))}
         </div>
       </section>
+	
+	<QuoteForm />
+           
+       {/* Our Story */}
 
-      {/* About */}
-      <section id="about">
-        <About lang={lang} />
-      </section>
+      <AboutCompany lang={lang} />
+
+       {/* Testimomnials */}
+	<Testimonials lang={lang} />
+
 
       {/* Contact */}
       <section id="contact">
         <Contact lang={lang} />
       </section>
+
+      <Gallery lang={lang} />
 
       <Footer />
     </>
