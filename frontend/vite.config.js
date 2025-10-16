@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/', // <-- Esto es lo correcto para Render con dominio propio
   build: {
     outDir: 'dist'
   }
